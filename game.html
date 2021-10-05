@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>강쥐조아 강쥐사랑해</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,700;1,300&family=Open+Sans&display=swap"
+        rel="stylesheet">
+    <style type="text/css">
+        body {
+            font-family: "Montserrat";
+            background-color: #FC430B;
+            margin: 0;
+            max-width: fit-content;
+            max-height: fit-content;
+        }
+
+        #header {
+            margin-left: 80px; margin-top: 30px;
+        }
+
+        #music {
+            position: absolute;
+            margin-top: 30px;
+            cursor: pointer;
+        }
+
+        #tm {
+            position: absolute;
+            margin-left: 100px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4em;
+            font-weight: 1, 300;
+            display: flex;
+            -webkit-user-select: none;
+            color: white;
+            margin-top: 30px;
+        }
+
+        #score {
+            margin-left: 1300px;
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            align-items:center;
+        }
+        #_score{
+            font-size: 100px;
+            position:absolute;
+        }
+        #latte {
+            position: absolute;
+            top: 100;
+            left: 100;
+            width: 180px;
+            height: 180px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <div id="music">
+            <img id="playBut" src="play.png" width="80px">
+            <audio id="mongzaSnd" src="mongza.mp3" width="80px"></audio>
+        </div>
+
+        <div id="tm"></div>
+        <div id="score">
+            <img src="star.png" width="250px">
+            <text id="_score">0</text>
+        </div>
+    </div>
+    <div id="latte">
+        <img id="latte_img" src="latte.png" width="180px">
+    </div>
+
+
+
+    <script type="text/javascript">
+
+        var state = false;
+
+        var score = 0;
+
+        var playBut = document.getElementById('playBut');
+
+        var imgDiv = document.getElementById('latte');
+        var img = document.getElementById('latte_img');
+
+        setTimeout(result,62000);
+        playBut.onclick=function(){
+            if (state) {
+                playBut.src = "play.png";
+                mongzaSnd.pause();
+                state = false;
+            }
+            else {
+                playBut.src = "stop.png";
+                mongzaSnd.play();
+                state = true;
+            }
+        }
+        function result(){
+            alert("빠밤~! 당신의 점수는 " + score + "점 입니다^0^");
+            clearInterval(game);
+            clearInterval(timeD);
+        }
+        imgDiv.onclick = function () {
+            var b = Math.random()*window.innerWidth - 180;
+            var c = Math.random()*window.innerHeight - 180;
+
+            if(b < 0) b=0;
+            if(c<0) c=0; 
+            imgDiv.style.left = b + "px";
+            imgDiv.style.top = c + "px";
+            score+=1;
+            document.getElementById('_score').innerHTML = score;
+        }
+
+        var time = 60;
+        var min = "1"
+        var sec = "60"
+
+        var x = setInterval(function () {
+            min = parseInt(time / 60);
+            sec = time % 60;
+
+            document.getElementById("tm").innerHTML = min + ':' + sec; time--;
+
+            if (time < 0) {
+                clearInterval(x);
+                document.getElementById("tm").innerHTML = "finish!";
+            }
+
+        }, 1000);
+
+
+    </script>
+
+
+
+</body>
+
+</html>

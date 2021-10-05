@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>강쥐조아 강쥐사랑해</title>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,700;1,300&family=Open+Sans&display=swap" rel="stylesheet">
+	<style type="text/css">
+		body{text-align: center;}
+		.tdate{font-family: 'Montserrat', sans-serif; font-size: 5em; font-weight: 100; -webkit-user-select: none; margin-top: 350px;}
+		#cl{font-family: 'Montserrat', sans-serif; font-size: 2em; font-weight: 1,300; color: #FC430B; margin-top: 20px;}
+		.start{margin-top: 220px; cursor: pointer;}
+	</style>
+</head>
+<body>
+		<div id="td" class="tdate"></div>
+		<div id="cl" class="clock"></div>
+		<div>
+			<img src="startbt.png" width="450px" class="start" id="st">
+		</div>
+
+
+<script type="text/javascript">
+	
+
+var today = new Date();
+
+console.log(today.getDate());
+
+
+var month = (today.getMonth() + 1);
+var day = today.getDate() < 10 ? ('0' + today.getDate()) : today.getDate();
+var yoil = (today.getDay());
+
+document.getElementById("td").innerHTML = month + '/' + day + '/' + yoiltrans(yoil);
+
+		function yoiltrans(num){
+			var num2;
+			if(num == "1"){ num2 = "Monday"}
+			else if(num == "2"){ num2 = "Tuesday"}
+			else if(num == "3"){ num2 = "Wednesday"}
+			else if(num == "4"){ num2 = "Thursday"}
+			else if(num == "5"){ num2 = "Friday"}
+			else if(num == "6"){ num2 = "Saturday"}
+			else if(num == "0"){ num2 = "Sunday"}
+			return num2;
+		}
+
+
+
+function getTime(){
+var d = new Date();
+
+var h = ('0' + (d.getHours() + 1)).slice(-2);
+var m = ('0' + d.getMinutes()).slice(-2);
+var s = ('0' + d.getSeconds()).slice(-2);
+
+document.getElementById("cl").innerHTML = h + ":" + m + ":" + s;}
+
+function init(){
+	setInterval(getTime, 1000);
+}
+
+init();
+
+
+  st.onclick = function(){
+  	location.href = "game.html";
+  }
+
+
+
+
+
+</script>
+
+</body>
+</html>
